@@ -4,14 +4,14 @@
       <slot></slot>
     </div>
     <div class="dots">
-      <span class="dot" v-for="(dot, index) in dots" :key="dot" :class="{active:currentPageIndex === index}"></span>
+      <span class="dot" v-for="(dot, index) in dots" :key="index" :class="{active:currentPageIndex === index}"></span>
     </div>
   </div>
 </template>
 
 <script>
 import BScroll from 'better-scroll'
-import {addClass} from 'common/js/dom'
+import {addClass} from 'assets/js/dom'
 
 export default {
   data() {
@@ -31,7 +31,7 @@ export default {
     },
     interval: {
       type: Number,
-      default: 2000
+      default: 4000
     }
   },
   mounted() {
@@ -111,7 +111,7 @@ export default {
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
-@import '~common/stylus/variable';
+@import '~assets/stylus/variable';
 
 .slider {
   min-height: 1px;
@@ -142,7 +142,7 @@ export default {
   }
 
   .dots {
-    position: absolute;
+    position: relative;
     right: 0;
     left: 0;
     bottom: 12px;

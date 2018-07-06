@@ -1,0 +1,10 @@
+{
+  "singleQuote": true,
+  "trailingComma": "none",
+  "bracketSpacing": false,
+  "alwaysParens": "always",
+  "printWidth": "120",
+  "jsxBracketSameLine": true,
+  "semi": false,
+  "eslintIntegration": true
+}
