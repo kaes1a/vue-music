@@ -17,9 +17,21 @@ export default {
       type: Boolean,
       default: true
     },
+    listenScroll: {
+      type: Boolean,
+      default: false
+    },
     data: {
       type: Array,
       default: null
+    },
+    pullup: {
+      type: Boolean,
+      default: false
+    },
+    beforeScroll: {
+      type: Boolean,
+      default: false
     },
     refreshDelay: {
       type: Number,
@@ -45,6 +57,27 @@ export default {
           easeTime: 600
         }
       })
+
+      if (this.listenScroll) {
+        let scrollSelf = this
+        this.scroll.on('scroll', position => {
+          scrollSelf.$emit('scroll', position)
+        })
+      }
+
+      if (this.pullup) {
+        this.scroll.on('scrollEnd', () => {
+          if (this.scroll.y <= this.scroll.maxScrollY + 50) {
+            this.$emit('scrollToEnd')
+          }
+        })
+      }
+
+      if (this.beforeScroll) {
+        this.scroll.on('beforeScrollStart', () => {
+          this.$emit('beforeScroll')
+        })
+      }
     },
     disable() {
       this.scroll && this.scroll.disable()
@@ -54,6 +87,12 @@ export default {
     },
     refresh() {
       this.scroll && this.scroll.refresh()
+    },
+    scrollTo() {
+      this.scroll && this.scroll.scrollTo.apply(this.scroll, arguments)
+    },
+    scrollToElement() {
+      this.scroll && this.scroll.scrollToElement.apply(this.scroll, arguments)
     }
   },
   watch: {
@@ -66,5 +105,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="stylus" rel="stylesheet/stylus">
+
 </style>

@@ -1,10 +1,14 @@
 <template>
   <div class="singer">
     <list-view :data="singers"></list-view>
+    <div v-show="!singers.length" class="loading-container">
+      <loading></loading>
+    </div>
   </div>
 </template>
 
 <script>
+import Loading from 'base/loading/loading'
 import {getSingerList} from 'api/singer'
 import {ERR_OK} from 'api/config'
 import Singer from 'assets/js/singer'
@@ -20,7 +24,10 @@ export default {
     }
   },
   created() {
-    this._getSingerList()
+    setTimeout(() => {
+      this._getSingerList()
+    }, 1500)
+    // this._getSingerList()
   },
   methods: {
     _getSingerList() {
@@ -79,7 +86,8 @@ export default {
     }
   },
   components: {
-    ListView
+    ListView,
+    Loading
   }
 }
 </script>
@@ -91,4 +99,10 @@ export default {
   bottom: 0;
   width: 100%;
 }
+.loading-container {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 </style>
