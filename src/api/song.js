@@ -7,17 +7,15 @@ export function getMusic(mid) {
   const data = Object.assign({}, commonParams, {
     songmid: mid,
     filename: 'c400' + mid + '.m4a',
-    guid: 2326725858,
+    guid: 1976488095,
     platform: 'yqq',
+    loginUin: 0,
     uin: 0,
     hostUin: 0,
     needNewCode: 0,
-    categoryId: 10000000,
-    format: 'json',
-    g_tk: 798210738,
-    loginUin: 0,
-    notice: 0,
-    cid: 205361747
+    g_tk: 5381,
+    cid: 205361747,
+    format: 'json'
   })
 
   return axios
