@@ -19,6 +19,7 @@ export function getDiscList() {
 
   const data = Object.assign({}, commonParams, {
     platform: 'yqq',
+    picmid: 1,
     hostUin: 0,
     sin: 0,
     ein: 29,

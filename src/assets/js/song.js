@@ -1,6 +1,6 @@
-// import {getLyric} from 'api/song'
-// import {ERR_OK} from 'api/config'
-// import {Base64} from 'js-base64'
+import {getLyric} from 'api/song'
+import {ERR_OK} from 'api/config'
+import {Base64} from 'js-base64'
 
 export default class Song {
   constructor({id, mid, singer, name, album, duration, image, url}) {
@@ -14,7 +14,7 @@ export default class Song {
     this.url = url
   }
 
-  /* getLyric() {
+  getLyric() {
     if (this.lyric) {
       return Promise.resolve(this.lyric)
     }
@@ -29,7 +29,7 @@ export default class Song {
         }
       })
     })
-  } */
+  }
 }
 
 export function createSong(musicData, songVkey) {

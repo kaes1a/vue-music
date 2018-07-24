@@ -14,7 +14,7 @@
   </div>
 </template>
 
-<script type="text/ecmascript-6">
+<script>
 export default {
   props: {
     songs: {
@@ -25,6 +25,9 @@ export default {
     }
   },
   methods: {
+    selectItem(item, index) {
+      this.$emit('select', item, index)
+    },
     getDesc(song) {
       return `${song.singer} - ${song.album}`
     }
