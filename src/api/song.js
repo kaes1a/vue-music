@@ -13,7 +13,6 @@ export function getMusic(mid) {
     uin: 0,
     hostUin: 0,
     needNewCode: 0,
-    g_tk: 5381,
     cid: 205361747,
     format: 'json'
   })
