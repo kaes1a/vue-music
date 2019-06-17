@@ -1,28 +1,46 @@
 <template>
-  <scroll class="listview" :data="data" ref="listview" :listenScroll="listenScroll" :probeType="probeType" @scroll="scroll">
+  <scroll class="listview"
+          :data="data"
+          ref="listview"
+          :listenScroll="listenScroll"
+          :probeType="probeType"
+          @scroll="scroll">
     <ul>
-      <li v-for="singerGroup in data" :key="singerGroup.index" class="list-group" ref="singerGroup">
+      <li v-for="singerGroup in data"
+          :key="singerGroup.index"
+          class="list-group"
+          ref="singerGroup">
         <h2 class="list-group-title">{{singerGroup.title}}</h2>
         <ul>
-          <li @click="selectItem(singer)" v-for="singer in singerGroup.singerItems" :key="singer.index" class="list-group-item">
-            <img class="avatar" v-lazy="singer.avatar"/>
+          <li @click="selectItem(singer)"
+              v-for="singer in singerGroup.singerItems"
+              :key="singer.index"
+              class="list-group-item">
+            <img class="avatar"
+                 v-lazy="singer.avatar" />
             <span class="name">{{singer.name}}</span>
           </li>
         </ul>
       </li>
     </ul>
-    <div class="list-shortcut" @click="oneClick" @touchstart.stop.prevent="onShortcutTouchStart" @touchmove.stop.prevent="onShortcutTouchMove" v-show="data.length">
+    <div class="list-shortcut"
+         @click="oneClick"
+         @touchstart.stop.prevent="onShortcutTouchStart"
+         @touchmove.stop.prevent="onShortcutTouchMove"
+         v-show="data.length">
       <ul>
-        <li v-for="(shortcut,index) in shortcutList" 
-        :key="shortcut.index" 
-        :data-index="index" 
-        class="shortcut" 
-        :class="{'current':currentIndex===index}">
+        <li v-for="(shortcut,index) in shortcutList"
+            :key="shortcut.index"
+            :data-index="index"
+            class="shortcut"
+            :class="{'current':currentIndex===index}">
           {{shortcut}}
         </li>
       </ul>
     </div>
-    <div class="list-fixed" v-show="fixedTitle" ref="fixed">
+    <div class="list-fixed"
+         v-show="fixedTitle"
+         ref="fixed">
       <h1 class="fixed-title">{{fixedTitle}}</h1>
     </div>
   </scroll>
@@ -162,84 +180,84 @@ export default {
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
-@import '~assets/stylus/variable';
+@import '~assets/stylus/variable'
 
 .listview {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background: $color-background;
+  position: relative
+  width: 100%
+  height: 100%
+  overflow: hidden
+  background: $color-background
 
   .list-group {
-    padding-bottom: 30px;
+    padding-bottom: 30px
 
     .list-group-title {
-      height: 30px;
-      line-height: 30px;
-      padding-left: 20px;
-      font-size: $font-size-small;
-      color: $color-text-l;
-      background: $color-highlight-background;
+      height: 30px
+      line-height: 30px
+      padding-left: 20px
+      font-size: $font-size-small
+      color: $color-text-l
+      background: $color-highlight-background
     }
 
     .list-group-item {
-      display: flex;
-      align-items: center;
-      padding: 20px 0 0 30px;
+      display: flex
+      align-items: center
+      padding: 20px 0 0 30px
 
       .avatar {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
+        width: 50px
+        height: 50px
+        border-radius: 50%
       }
 
       .name {
-        margin-left: 20px;
-        color: $color-text-l;
-        font-size: $font-size-medium;
+        margin-left: 20px
+        color: $color-text-l
+        font-size: $font-size-medium
       }
     }
   }
 
   .list-shortcut {
-    position: absolute;
-    z-index: 30;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 20px;
-    padding: 20px 0;
-    border-radius: 10px;
-    text-align: center;
-    background: $color-background-d;
-    font-family: Helvetica;
+    position: absolute
+    z-index: 30
+    right: 0
+    top: 50%
+    transform: translateY(-50%)
+    width: 20px
+    padding: 20px 0
+    border-radius: 10px
+    text-align: center
+    background: $color-background-d
+    font-family: Helvetica
 
     .shortcut {
-      padding: 3px;
-      line-height: 1;
-      color: $color-text-l;
-      font-size: $font-size-small;
+      padding: 3px
+      line-height: 1
+      color: $color-text-l
+      font-size: $font-size-small
 
       &.current {
-        color: $color-theme;
+        color: $color-theme
       }
     }
   }
 
   .list-fixed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
 
     .fixed-title {
-      height: 30px;
-      line-height: 30px;
-      padding-left: 20px;
-      font-size: $font-size-small;
-      color: $color-text-l;
-      background: $color-highlight-background;
+      height: 30px
+      line-height: 30px
+      padding-left: 20px
+      font-size: $font-size-small
+      color: $color-text-l
+      background: $color-highlight-background
     }
   }
 }
