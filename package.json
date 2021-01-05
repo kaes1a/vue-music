@@ -13,7 +13,7 @@
     "format-code": "prettier-eslint --write \"src/**/*.js\" \"src/**/*.vue\""
   },
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "babel-runtime": "^6.26.0",
     "better-scroll": "^1.12.4",
     "create-keyframe-animation": "^0.1.0",
